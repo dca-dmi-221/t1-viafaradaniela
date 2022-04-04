@@ -1,74 +1,13 @@
+
+let song, songI;
 let startScreen;
 let playlists;
 let playlistSeason1;
 let playlistSeason2;
 let playlistFansFavorite;
-//arreglo de objetos 
-
-function setup() {
-  interface = 0;
-  createCanvas(1280, 720);
-  slider = createSlider(0, 1, 0.5, 0.01);
-  //song = loadSound("music/All_for_us.mp3", loaded)
-  song = loadSound("music/Im_tired.mp3", loaded)
-  playlists = loadImage("images/playlist.jpg");
-  playlistSeason1 = loadImage("images/playlist_1.jpg");
-  playlistSeason2 = loadImage("images/playlist_2.jpg");
-  playlistFansFavorite = loadImage("images/playlist_3.jpg");
-  startScreen = loadImage("images/start.jpg");
-}
-
-function loaded() {
-  song.play();
-}
-
-function draw() {
-  background(0);
-  song.setVolume(slider.value());
-  //pantallaUno();
-  switch (interface) {
-    case 0:
-      image(startScreen, 0, 0, 1280, 720)
-      break; //pantalla inicio
-    case 1:
-      image(playlists, 0, 0, 1280, 720)
-      break; //escoger playlist
-    case 2:
-      image(playlistSeason1, 0, 0, 1280, 720)
-      break; //playlist season 1
-    case 3:
-      image(playlistSeason2, 0, 0, 1280, 720)
-      break; //playlist season 2
-    case 4:
-      image(playlistFansFavorite, 0, 0, 1280, 720)
-      break; //playlist fans
-  }
-  text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
-}
-
-function mousePressed() {
-  if (interface === 0) {
-    if (dist(mouseX, mouseY, 679, 587) < 90) {
-      interface = 1;
-    }
-  }
-  if (interface === 1) {
-    if (dist(mouseX, mouseY, 452, 141) < 90) {
-      console.log("pantallados");
-      interface = 2;
-    } else if (dist(mouseX, mouseY, 813, 150) < 90) {
-      interface = 3;
-    } else if (dist(mouseX, mouseY, 448, 503) < 90) {
-      interface = 4;
-    }
-  } else {
-    if (mouseX > 71 && mouseX < 171 && mouseY > 68 && mouseY < 133) {
-      interface = 1;
-    }
-  }
-}
-
-
+const playlist0 = [];
+const playlist1 = [];
+const playlist2 = [];
 const songInfo = [{ //playlist season 1
 
     file: "music/All_for_us.mp3",
@@ -80,7 +19,7 @@ const songInfo = [{ //playlist season 1
   },
   {
     file: "music/When_i_r.i.p.mp3",
-    img: "images/when_i_rip.png",
+    img: "images/when_i_r.i.p.png",
   },
   {
     file: "music/Still_dont_know_my_name.mp3",
@@ -123,10 +62,111 @@ const songInfo = [{ //playlist season 1
   },
   {
     file: "music/Yeh_I_Fuckin_Did_It.mp3",
-    img: "images/yeh_i_fuckin_did_it,png",
+    img: "images/yeh_i_fuckin_did_it.png",
   },
   {
     file: "music/All_for_us.mp3",
     img: "images/all_for_us_2.png",
   }
 ]
+//arreglo de objetos 
+
+function setup() {
+  interface = 0;
+  createCanvas(1280, 720);
+  slider = createSlider(0, 1, 0.5, 0.01);
+  //song = loadSound("music/Im_tired.mp3", loaded)
+  playlists = loadImage("images/playlist.jpg");
+  playlistSeason1 = loadImage("images/playlist_1.jpg");
+  playlistSeason2 = loadImage("images/playlist_2.jpg");
+  playlistFansFavorite = loadImage("images/playlist_3.jpg");
+  startScreen = loadImage("images/start.jpg");
+  songFiles = songInfo.map(({
+    file,
+    img
+  }) => {
+    return {
+      songInfo: loadSound(file),
+      imgInfo: loadImage(img),
+    }
+  })
+  songFiles.forEach((song, i) => {
+    if (i < 5) playlist0.push(song);
+    else if (i > 4 && i < 10) playlist1.push(song);
+    else playlist2.push(song);
+  })
+}
+
+
+
+function loaded() {
+  song.play();
+}
+
+function draw() {
+  background(0);
+ // song.setVolume(slider.value());
+  //pantallaUno();
+  switch (interface) {
+    case 0:
+      image(startScreen, 0, 0, 1280, 720)
+      break; //pantalla inicio
+    case 1:
+      image(playlists, 0, 0, 1280, 720)
+      break; //escoger playlist
+    case 2:
+      image(playlistSeason1, 0, 0, 1280, 720)
+      break; //playlist season 1
+    case 3:
+      image(playlistSeason2, 0, 0, 1280, 720)
+      break; //playlist season 2
+    case 4:
+      image(playlistFansFavorite, 0, 0, 1280, 720)
+      break; //playlist fans
+  }
+  text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
+}
+
+function mousePressed() {
+  if (interface === 0) {
+    if (dist(mouseX, mouseY, 679, 587) < 90) {
+      interface = 1;
+    }
+  }
+  if (interface === 1) {
+    if (dist(mouseX, mouseY, 452, 141) < 90) {
+      console.log("pantallados");
+      interface = 2;
+    } else if (dist(mouseX, mouseY, 813, 150) < 90) {
+      interface = 3;
+    } else if (dist(mouseX, mouseY, 448, 503) < 90) {
+      interface = 4;
+    }
+  } else {
+    if (mouseX > 71 && mouseX < 171 && mouseY > 68 && mouseY < 133) {
+      interface = 1;
+    }
+  }
+
+  if (interface === 2) {
+    if (dist(mouseX, mouseY,484,107)<10){
+    console.log("si");
+   if (song) song.stop();
+    if (interface === 2) {
+      song = playlist0[0].songInfo;
+      songI = 0;
+      song.play(); 
+    }
+  }
+    if (dist(mouseX, mouseY,586,101)<10){
+      console.log("si");
+     if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[1].songInfo;
+        songI = 1;
+        song.play(); 
+      }
+  }
+
+  }
+}
