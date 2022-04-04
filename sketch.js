@@ -1,4 +1,3 @@
-
 let song, songI;
 let startScreen;
 let playlists;
@@ -105,7 +104,7 @@ function loaded() {
 
 function draw() {
   background(0);
- // song.setVolume(slider.value());
+  // song.setVolume(slider.value());
   //pantallaUno();
   switch (interface) {
     case 0:
@@ -147,26 +146,100 @@ function mousePressed() {
       interface = 1;
     }
   }
-
+  //all for us canción
   if (interface === 2) {
-    if (dist(mouseX, mouseY,484,107)<10){
-    console.log("si");
-   if (song) song.stop();
-    if (interface === 2) {
-      song = playlist0[0].songInfo;
-      songI = 0;
-      song.play(); 
-    }
-  }
-    if (dist(mouseX, mouseY,586,101)<10){
+    if (dist(mouseX, mouseY, 484, 107) < 10) {
       console.log("si");
-     if (song) song.stop();
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[0].songInfo;
+        songI = 0;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 586, 101) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[0].songInfo;
+        songI = 0;
+        song.play();
+      }
+    } //formula canción
+    if (dist(mouseX, mouseY, 483, 186) < 10) {
+      console.log("si");
+      if (song) song.stop();
       if (interface === 2) {
         song = playlist0[1].songInfo;
         songI = 1;
-        song.play(); 
+        song.play();
       }
-  }
-
+    }
+    if (dist(mouseX, mouseY, 575,191) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[1].songInfo;
+        songI = 1;
+        song.play();
+      }
+    }
+    //When i r.p.i canción
+    if (dist(mouseX, mouseY, 483,276) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[2].songInfo;
+        songI = 2;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 579,274) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[2].songInfo;
+        songI = 2;
+        song.play();
+      }
+    }
+    //still dont know my name canción
+    if (dist(mouseX, mouseY, 484,359) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[3].songInfo;
+        songI = 3;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 585,356) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[3].songInfo;
+        songI = 3;
+        song.play();
+      }
+    }
+    //mount everest canción
+    if (dist(mouseX, mouseY, 484,443) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[4].songInfo;
+        songI = 4;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 579,441) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist0[4].songInfo;
+        songI = 4;
+        song.play();
+      }
+    }
   }
 }
