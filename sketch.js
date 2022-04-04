@@ -98,13 +98,14 @@ function setup() {
 
 
 
-function loaded() {
+/*function loaded() {
   song.play();
 }
+*/
 
 function draw() {
   background(0);
-  // song.setVolume(slider.value());
+  //song.setVolume(slider.value());
   //pantallaUno();
   switch (interface) {
     case 0:
@@ -146,6 +147,8 @@ function mousePressed() {
       interface = 1;
     }
   }
+  /////playlist season 1
+
   //all for us canción
   if (interface === 2) {
     if (dist(mouseX, mouseY, 484, 107) < 10) {
@@ -238,6 +241,104 @@ function mousePressed() {
       if (interface === 2) {
         song = playlist0[4].songInfo;
         songI = 4;
+        song.play();
+      }
+    }
+  }
+  ///////Playlist season 2
+
+   //i'm tired canción
+   if (interface === 3) {
+    if (dist(mouseX, mouseY, 412,93) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[5].songInfo;
+        songI = 5;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 549,96) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 2) {
+        song = playlist1[5].songInfo;
+        songI = 5;
+        song.play();
+      }
+    } //elliot canción
+    if (dist(mouseX, mouseY,442,176 ) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[6].songInfo;
+        songI = 6;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 552,180) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {0
+        song = playlist1[6].songInfo;
+        songI = 6;
+        song.play();
+      }
+    }
+    //pick me up canción
+    if (dist(mouseX, mouseY,441,260 ) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[7].songInfo;
+        songI = 7;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 555,265) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[7].songInfo;
+        songI = 7;
+        song.play();
+      }
+    }
+    //lo vas a olvidar canción
+    if (dist(mouseX, mouseY, 443,348) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[8].songInfo;
+        songI = 8;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 561,356) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[8].songInfo;
+        songI = 8;
+        song.play();
+      }
+    }
+    //watercolor eyes canción
+    if (dist(mouseX, mouseY, 444, 429) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[9].songInfo;
+        songI = 9;
+        song.play();
+      }
+    }
+    if (dist(mouseX, mouseY, 554,437) < 10) {
+      console.log("si");
+      if (song) song.stop();
+      if (interface === 3) {
+        song = playlist1[9].songInfo;
+        songI = 9;
         song.play();
       }
     }
