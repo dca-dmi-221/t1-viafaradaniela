@@ -74,7 +74,7 @@ function setup() {
   interface = 0;
   createCanvas(1280, 720);
   slider = createSlider(0, 1, 0.5, 0.01);
-  //song = loadSound("music/Im_tired.mp3", loaded)
+  //songInfo = loadSound("music/Im_tired.mp3", loaded)
   playlists = loadImage("images/playlist.jpg");
   playlistSeason1 = loadImage("images/playlist_1.jpg");
   playlistSeason2 = loadImage("images/playlist_2.jpg");
@@ -105,7 +105,7 @@ function setup() {
 
 function draw() {
   background(0);
-  //song.setVolume(slider.value());
+  //songFiles.setVolume(slider.value());
   //pantallaUno();
   switch (interface) {
     case 0:
@@ -116,12 +116,15 @@ function draw() {
       break; //escoger playlist
     case 2:
       image(playlistSeason1, 0, 0, 1280, 720)
-      break; //playlist season 1
+      if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
+      break; //playlist season 1,
     case 3:
       image(playlistSeason2, 0, 0, 1280, 720)
+      if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
       break; //playlist season 2
     case 4:
       image(playlistFansFavorite, 0, 0, 1280, 720)
+      if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
       break; //playlist fans
   }
   text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
@@ -178,7 +181,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 575,191) < 10) {
+    if (dist(mouseX, mouseY, 575, 191) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -188,7 +191,7 @@ function mousePressed() {
       }
     }
     //When i r.p.i canción
-    if (dist(mouseX, mouseY, 483,276) < 10) {
+    if (dist(mouseX, mouseY, 483, 276) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -197,7 +200,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 579,274) < 10) {
+    if (dist(mouseX, mouseY, 579, 274) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -207,7 +210,7 @@ function mousePressed() {
       }
     }
     //still dont know my name canción
-    if (dist(mouseX, mouseY, 484,359) < 10) {
+    if (dist(mouseX, mouseY, 484, 359) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -216,7 +219,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 585,356) < 10) {
+    if (dist(mouseX, mouseY, 585, 356) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -226,7 +229,7 @@ function mousePressed() {
       }
     }
     //mount everest canción
-    if (dist(mouseX, mouseY, 484,443) < 10) {
+    if (dist(mouseX, mouseY, 484, 443) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -235,7 +238,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 579,441) < 10) {
+    if (dist(mouseX, mouseY, 579, 441) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 2) {
@@ -257,7 +260,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 548,95) < 10) {
+    if (dist(mouseX, mouseY, 548, 95) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -265,9 +268,9 @@ function mousePressed() {
         songI = 0;
         song.play();
       }
-    } 
+    }
     ///elliot song
-    if (dist(mouseX, mouseY, 448,176) < 10) {
+    if (dist(mouseX, mouseY, 448, 176) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -275,8 +278,8 @@ function mousePressed() {
         songI = 1;
         song.play();
       }
-    } 
-    if (dist(mouseX, mouseY, 545,184) < 10) {
+    }
+    if (dist(mouseX, mouseY, 545, 184) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -286,7 +289,7 @@ function mousePressed() {
       }
     }
     ///pick me up
-    if (dist(mouseX, mouseY, 445,265) < 10) {
+    if (dist(mouseX, mouseY, 445, 265) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -295,7 +298,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 548,266) < 10) {
+    if (dist(mouseX, mouseY, 548, 266) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -305,7 +308,7 @@ function mousePressed() {
       }
     }
     ///lo vas a olvidar
-    if (dist(mouseX, mouseY, 444,341) < 10) {
+    if (dist(mouseX, mouseY, 444, 341) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -314,7 +317,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 559,353) < 10) {
+    if (dist(mouseX, mouseY, 559, 353) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -324,7 +327,7 @@ function mousePressed() {
       }
     }
     ///watercolor eyes
-    if (dist(mouseX, mouseY, 444,429) < 10) {
+    if (dist(mouseX, mouseY, 444, 429) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -333,7 +336,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 550,535) < 10) {
+    if (dist(mouseX, mouseY, 550, 535) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 3) {
@@ -342,10 +345,10 @@ function mousePressed() {
         song.play();
       }
     }
-  } 
+  }
   ////playlist fans
   if (interface === 4) {
-    if (dist(mouseX, mouseY, 457,134) < 10) {
+    if (dist(mouseX, mouseY, 457, 134) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -354,7 +357,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 543,132) < 10) {
+    if (dist(mouseX, mouseY, 543, 132) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -364,7 +367,7 @@ function mousePressed() {
       }
     }
     //stand by me
-    if (dist(mouseX, mouseY, 459,222) < 10) {
+    if (dist(mouseX, mouseY, 459, 222) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -373,7 +376,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 553,222) < 10) {
+    if (dist(mouseX, mouseY, 553, 222) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -383,7 +386,7 @@ function mousePressed() {
       }
     }
     ///yeh i fucking did it
-    if (dist(mouseX, mouseY, 458,307) < 10) {
+    if (dist(mouseX, mouseY, 458, 307) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -392,7 +395,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 538,305) < 10) {
+    if (dist(mouseX, mouseY, 538, 305) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -402,7 +405,7 @@ function mousePressed() {
       }
     }
     ///all for us
-    if (dist(mouseX, mouseY, 454,392) < 10) {
+    if (dist(mouseX, mouseY, 454, 392) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
@@ -411,7 +414,7 @@ function mousePressed() {
         song.play();
       }
     }
-    if (dist(mouseX, mouseY, 550,397) < 10) {
+    if (dist(mouseX, mouseY, 550, 397) < 10) {
       console.log("si");
       if (song) song.stop();
       if (interface === 4) {
