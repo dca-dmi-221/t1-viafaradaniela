@@ -1,4 +1,6 @@
+
 let song, songI;
+//let imTired;
 let startScreen;
 let playlists;
 let playlistSeason1;
@@ -73,13 +75,19 @@ const songInfo = [{ //playlist season 1
 function setup() {
   interface = 0;
   createCanvas(1280, 720);
-  slider = createSlider(0, 1, 0.5, 0.01);
+  sliderVolume = createSlider(0, 1, 0.5, 0.01);
+  sliderVolume.position (940,611);
+  sliderVolume.style ("width","173px");
+  sliderVolume.style ("display","none");
   //songInfo = loadSound("music/Im_tired.mp3", loaded)
   playlists = loadImage("images/playlist.jpg");
   playlistSeason1 = loadImage("images/playlist_1.jpg");
   playlistSeason2 = loadImage("images/playlist_2.jpg");
   playlistFansFavorite = loadImage("images/playlist_3.jpg");
   startScreen = loadImage("images/start.jpg");
+  //imTired = loadImage("images/im_tired.png");
+
+
   songFiles = songInfo.map(({
     file,
     img
@@ -91,7 +99,7 @@ function setup() {
   })
   songFiles.forEach((song, i) => {
     if (i < 5) playlist0.push(song);
-    else if (i > 4 && i < 10) playlist1.push(song);
+    else if (i < 10) playlist1.push(song);
     else playlist2.push(song);
   })
 }
@@ -110,21 +118,26 @@ function draw() {
   switch (interface) {
     case 0:
       image(startScreen, 0, 0, 1280, 720)
+      sliderVolume.style ("display","none");
       break; //pantalla inicio
     case 1:
       image(playlists, 0, 0, 1280, 720)
+      sliderVolume.style ("display","none");
       break; //escoger playlist
     case 2:
       image(playlistSeason1, 0, 0, 1280, 720)
+      sliderVolume.style ("display","block");
       if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
       break; //playlist season 1,
     case 3:
       image(playlistSeason2, 0, 0, 1280, 720)
-      if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
+      sliderVolume.style ("display","block");
+     if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
       break; //playlist season 2
     case 4:
       image(playlistFansFavorite, 0, 0, 1280, 720)
-      if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
+      sliderVolume.style ("display","block");
+     if (song && songI !== undefined) image(songFiles[songI].imgInfo, 108, 546);
       break; //playlist fans
   }
   text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
@@ -161,6 +174,7 @@ function mousePressed() {
         song = playlist0[0].songInfo;
         songI = 0;
         song.play();
+        //image(songFiles[songI].imgInfo, 108, 546);
       }
     }
     if (dist(mouseX, mouseY, 586, 101) < 10) {
@@ -424,4 +438,8 @@ function mousePressed() {
       }
     }
   }
+}
+
+function mouseDragged(){
+  song.setVolume(sliderVolume.value());
 }
